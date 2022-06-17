@@ -6,18 +6,151 @@
 	},
 	"item": [
 		{
-			"name": "Get All users",
+			"name": "Notes",
+			"item": [
+				{
+					"name": "Get All notes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "1",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/notes?archived=false",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"notes"
+							],
+							"query": [
+								{
+									"key": "archived",
+									"value": "false"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get One note",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "1",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/notes/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"notes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update One note",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "1",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"text\": \"this is an updated note\",\n    \"archived\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/notes/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"notes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create One note",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "1",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"text\": \"this is a note\",\n    \"archived\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/notes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"notes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Health",
 			"request": {
 				"method": "GET",
-				"header": [
-					{
-						"key": "userId",
-						"value": "1",
-						"type": "default"
-					}
-				],
+				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/api/v1/users",
+					"raw": "http://localhost:3000/api/v1/health",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -26,108 +159,7 @@
 					"path": [
 						"api",
 						"v1",
-						"users"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get One user",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "userId",
-						"value": "1",
-						"type": "default"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:3000/api/v1/users/1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"v1",
-						"users",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Update One user",
-			"request": {
-				"method": "PUT",
-				"header": [
-					{
-						"key": "userId",
-						"value": "1",
-						"type": "default"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"text\": \"this is an updated note\",\n    \"archived\": false\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:3000/api/v1/users/1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"v1",
-						"users",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Create One user",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "userId",
-						"value": "1",
-						"type": "default"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"text\": \"this is a note\",\n    \"archived\": false\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:3000/api/v1/users",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"v1",
-						"users"
+						"health"
 					]
 				}
 			},
