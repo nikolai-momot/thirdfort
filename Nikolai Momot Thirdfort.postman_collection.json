@@ -82,7 +82,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"text\": \"this is an updated note\",\n    \"archived\": true\n}",
+							"raw": "{\n    \"text\": \"this is an updated note\",\n    \"archived\": false\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -90,7 +90,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/v1/notes/1",
+							"raw": "http://localhost:3000/api/v1/notes/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -100,7 +100,7 @@
 								"api",
 								"v1",
 								"notes",
-								"1"
+								"2"
 							]
 						}
 					},
@@ -137,6 +137,34 @@
 								"api",
 								"v1",
 								"notes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete One note",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "1",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/notes/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"notes",
+								"1"
 							]
 						}
 					},

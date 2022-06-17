@@ -20,6 +20,15 @@ exports.updateOne = async ctx => {
   ctx.body = note;
 };
 
+exports.deleteOne = async ctx => {
+  const { noteId } = ctx.params;
+  const userId = ctx.request.headers['x-user-id'];
+  const note = await service.deleteOne({ ...ctx.params, userId })
+  ctx.assert(note, 404, `Note with ID ${noteId} could not be deleted`);
+  ctx.status = 200;
+  ctx.body = { message: `Note with ID ${noteId} has bee successfully deleted`};
+};
+
 exports.getAll = async ctx => {
   const userId = ctx.request.headers['x-user-id'];
   const notes = await service.getAll({ ...ctx.request.query, userId })

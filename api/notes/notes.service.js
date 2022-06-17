@@ -19,7 +19,16 @@ exports.createOne = async (params, body) => {
 
 exports.updateOne = async (params, body) => {
     const existingNote = await this.getOne(params)
+
+    if (!existingNote)
+        return;
+
     const newNote = { ...existingNote, ...body }
     const updatedNote = await repository.updateOne(params, newNote)
     return updatedNote
+};
+
+exports.deleteOne = async (params) => {
+    const deletedNote = await repository.deleteOne(params)
+    return deletedNote
 };

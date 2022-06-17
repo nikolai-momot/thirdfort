@@ -26,3 +26,7 @@ exports.createOne = async ({ userId }, body) => {
 exports.updateOne = async ({ userId, noteId }, body) => {
     return await db('notes').where({ id: noteId, user_id: userId }).update({ ...body, id: noteId, user_id: userId, archived: body.archived === true }, columns);
 };
+
+exports.deleteOne = async ({ userId, noteId }, body) => {
+    return await db('notes').where({ id: noteId, user_id: userId }).delete(columns);
+};
