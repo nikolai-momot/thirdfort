@@ -11,12 +11,10 @@ function applyApiMiddleware(app) {
     prefix: `/api/v1`,
   });
 
-
-  router
-    .get('/health', async ctx => {
-      ctx.status = 200;
-      ctx.body = { message: 'Alive'}
-    })
+  router.get('/health', async ctx => {
+    ctx.status = 200;
+    ctx.body = { message: 'Alive' };
+  });
 
   // Require all the folders and create a sub-router for each feature api
   fs.readdirSync(__dirname)

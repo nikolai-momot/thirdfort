@@ -1,6 +1,6 @@
 'use strict';
 
-require('dotenv/config')
+require('dotenv/config');
 
 const http = require('http');
 const server = require('./server');
@@ -15,9 +15,7 @@ async function bootstrap() {
 }
 
 bootstrap()
-  .then(bs =>
-    console.log(`🚀 Server listening on port ${bs.address().port}!`),
-  )
+  .then(bs => console.log(`🚀 Server listening on port ${bs.address().port}!`))
   .catch(err => {
     setImmediate(() => {
       console.error('Unable to run the server because of the following error:');

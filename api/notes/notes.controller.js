@@ -5,7 +5,7 @@ const service = require('./notes.service');
 exports.getOne = async ctx => {
   const { noteId } = ctx.params;
   const userId = ctx.request.headers['x-user-id'];
-  const note = await service.getOne({ ...ctx.params, userId })
+  const note = await service.getOne({ ...ctx.params, userId });
   ctx.assert(note, 404, `Note with ID ${noteId} doesn't exist`);
   ctx.status = 200;
   ctx.body = note;
@@ -14,7 +14,10 @@ exports.getOne = async ctx => {
 exports.updateOne = async ctx => {
   const { noteId } = ctx.params;
   const userId = ctx.request.headers['x-user-id'];
-  const note = await service.updateOne({ ...ctx.params, userId }, ctx.request.body)
+  const note = await service.updateOne(
+    { ...ctx.params, userId },
+    ctx.request.body,
+  );
   ctx.assert(note, 404, `Note with ID ${noteId} could not be updated`);
   ctx.status = 200;
   ctx.body = note;
@@ -23,22 +26,22 @@ exports.updateOne = async ctx => {
 exports.deleteOne = async ctx => {
   const { noteId } = ctx.params;
   const userId = ctx.request.headers['x-user-id'];
-  const note = await service.deleteOne({ ...ctx.params, userId })
+  const note = await service.deleteOne({ ...ctx.params, userId });
   ctx.assert(note, 404, `Note with ID ${noteId} could not be deleted`);
   ctx.status = 200;
-  ctx.body = { message: `Note with ID ${noteId} has bee successfully deleted`};
+  ctx.body = { message: `Note with ID ${noteId} has bee successfully deleted` };
 };
 
 exports.getAll = async ctx => {
   const userId = ctx.request.headers['x-user-id'];
-  const notes = await service.getAll({ ...ctx.request.query, userId })
+  const notes = await service.getAll({ ...ctx.request.query, userId });
   ctx.status = 200;
   ctx.body = notes;
 };
 
 exports.createOne = async ctx => {
   const userId = ctx.request.headers['x-user-id'];
-  const note = await service.createOne({ userId }, ctx.request.body)
+  const note = await service.createOne({ userId }, ctx.request.body);
   ctx.assert(note, 400, 'The note info is malformed!');
   ctx.status = 201;
   ctx.body = note;

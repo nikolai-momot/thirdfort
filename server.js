@@ -12,7 +12,6 @@ const server = new Koa();
 
 server.use(logger);
 
-
 /**
  * Pass to our server instance middlewares
  */
