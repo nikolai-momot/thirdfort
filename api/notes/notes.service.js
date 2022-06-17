@@ -1,11 +1,9 @@
 'use strict';
 
-const generateId = require('../../utils/generateId.util');
 const repository = require('./notes.repository');
 
 exports.getOne = async (params) => {
-    const { noteId } = params;
-    const note = await repository.getOne(note => note.id === noteId);
+    const note = await repository.getOne(params);
     return note;
 };
 
@@ -15,19 +13,13 @@ exports.getAll = async (params) => {
 };
 
 exports.createOne = async (params, body) => {
-    const { name } = body;
-    const id = generateId();
-    const newNote = {
-        id,
-        name,
-    };
-    const createdNote = await repository.create(newNote);
+    const createdNote = await repository.createOne(params, body);
     return createdNote;
 };
 
 exports.updateOne = async (params, body) => {
     const existingNote = await this.getOne(params)
     const newNote = { ...existingNote, ...body }
-    const updatedNote = await repository.updateOne(newNote)
+    const updatedNote = await repository.updateOne(params, newNote)
     return updatedNote
 };

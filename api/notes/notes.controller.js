@@ -22,7 +22,6 @@ exports.updateOne = async ctx => {
 
 exports.getAll = async ctx => {
   const userId = ctx.request.headers['x-user-id'];
-  console.log('ctx.request.headers', ctx.request.headers)
   const notes = await service.getAll({ ...ctx.request.query, userId })
   ctx.status = 200;
   ctx.body = notes;

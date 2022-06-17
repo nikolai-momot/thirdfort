@@ -16,13 +16,13 @@ exports.getOne = async ({ userId, noteId }) => {
 };
 
 exports.getAll = async ({ userId, archived }) => {
-    return await db('notes').where({ user_id: userId, archived: !!archived }).select(columns);
+    return await db('notes').where({ user_id: userId, archived: archived === 'true' }).select(columns);
 };
 
 exports.createOne = async ({ userId }, body) => {
-    return await db('notes').insert({ ...body, user_id: userId })
+    return await db('notes').insert({ ...body, user_id: userId, archived: body.archived === true }, columns)
 };
 
 exports.updateOne = async ({ userId, noteId }, body) => {
-    return await db('notes').where({ id: noteId, user_id: userId }).update(columns, { ...body, id: noteId, user_id: userId });
+    return await db('notes').where({ id: noteId, user_id: userId }).update({ ...body, id: noteId, user_id: userId, archived: body.archived === true }, columns);
 };

@@ -9,7 +9,7 @@ module.exports = Router => {
 
   router
     .get('/:noteId', controller.getOne)
-    .put('/', controller.updateOne)
+    .put('/:noteId', controller.updateOne)
     .get('/', controller.getAll)
     .post('/', controller.createOne);
 
